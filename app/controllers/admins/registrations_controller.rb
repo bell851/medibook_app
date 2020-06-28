@@ -1,18 +1,10 @@
 # frozen_string_literal: true
 
 class Admins::RegistrationsController < Devise::RegistrationsController
+  prepend_before_action :require_no_authentication, only: [:cancel]
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  #アカウント登録後リダイレクト先
-  # def after_sign_up_path_for(resource)
-  #   admins_path
-  # end
-
-  #アカウント編集後のリダイレクト先
-  def after_update_path_for(resource)
-    admins_path
-  end
 
   # GET /resource/sign_up
   # def new
@@ -48,7 +40,11 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def current_user_is_admin?
+
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -61,10 +57,15 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    admins_path
+  end
 
+  #アカウント編集後のリダイレクト先
+  def after_update_path_for(resource)
+    admins_path
+  end
+  
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
