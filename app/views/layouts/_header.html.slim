@@ -1,0 +1,7 @@
+header
+    h1 医療&nbsp;x&nbsp;絵本&nbsp;LABO
+    - if admin_signed_in?
+        = link_to current_admin.name, edit_admin_registration_path
+        = link_to 'ログアウト', destroy_admin_session_path, method: :delete
+    - else
+        = link_to 'ログイン', new_admin_session_path

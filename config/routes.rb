@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admins/new'
   devise_for :admins
   root 'pages#index'
   get 'pages/show'
