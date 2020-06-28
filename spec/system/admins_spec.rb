@@ -1,4 +1,4 @@
-require '../rails_helper'
+require 'rails_helper'
 
 describe 'Admins management function', type: :syetem do
     describe 'sessions' do

@@ -1,8 +1,5 @@
 class AdminsController < ApplicationController
-  def new
-  end
-
-  def create
-    
+  def index
+    @admins = Admin.all
   end
 end
