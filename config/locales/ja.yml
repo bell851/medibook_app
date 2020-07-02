@@ -1,5 +1,13 @@
 ja:
   activerecord:
+    errors:
+      models:
+        admin:
+          attributes:
+            email:
+              blank: "が空になっています"
+            password:
+              blank: "が空になっています"
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻

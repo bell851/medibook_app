@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'Rails_helper'
 
 describe 'Admins management function', type: :syetem do
     describe 'sessions' do
@@ -24,14 +24,16 @@ describe 'Admins management function', type: :syetem do
         # end
         context 'enter an invalid values' do 
             before do
-                fill_in 'メールアドレス', with: ''
-                fill_in 'パスワード', with: ''
+                fill_in "メールアドレス" , with: ''
+                fill_in "パスワード", with: ''
                 click_button 'ログイン'
             end
             subject { page }
             it 'gets an flash messages' do
-                is_expected.to have_selector('.alert', text: 'メールアドレスかパスワードが違います。')
+                is_expected.to have_selector('.alert', text: 'メールアドレスまたはパスワードが違います。')
                 is_expected.to have_current_path new_admin_session_path
+                # expect(page).to have_content 'メールアドレスかパスワードが違います。'
+                # expect(page).to have_current_path new_admin_session_path
             end
         end
     end
