@@ -1,0 +1,21 @@
+h2
+    | パスワードの入力
+= form_for(resource, as: resource_name, url: confirmation_path(resource_name)) do |f|
+    = f.hidden_field :confirmation_token
+    = devise_error_messages!
+    .field
+        = f.label :name
+        = f.text_field :name
+    .field
+        = f.label :password
+        - if @minimum_password_length
+            br
+            em
+                |(
+                = @minimum_password_length
+                |  文字以上)
+        br
+        = f.password_field :password, autocomplete: "off"
+    .actions
+        = f.submit "送信"
+

@@ -62,3 +62,4 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
+gem 'rails-i18n', '~> 6.0.0'
