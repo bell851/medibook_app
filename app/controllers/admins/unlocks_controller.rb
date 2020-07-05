@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Admins::UnlocksController < Devise::UnlocksController
+  layout 'admin'
   before_action :authenticate_admin!
   # GET /resource/unlock/new
   # def new

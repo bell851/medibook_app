@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Admins::ConfirmationsController < Devise::ConfirmationsController
+  layout 'admin'
+  add_flash_types :success
   before_action :authenticate_admin!
   # GET /resource/confirmation/new
   # def new
@@ -24,8 +26,10 @@ class Admins::ConfirmationsController < Devise::ConfirmationsController
   
     if resource.update(confirmation_params)
       self.resource = resource_class.confirm_by_token(confirmation_token)
-      set_flash_message :notice, :confirmed
-      sign_in_and_redirect  resource
+      message = '名前とパスワードの登録が完了しました'
+      #set_flash_message :notice, :confirmed
+      flash[:success] = message
+      sign_in_and_redirect resource
     else
       render :show
     end
