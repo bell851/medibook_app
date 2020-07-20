@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
   def index
-    @admins = Admin.all
+    @admins = Mysql::Admin.all
   end
 end
